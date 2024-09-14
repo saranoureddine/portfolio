@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatAI</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class='bg-dark'>
+
+
+    <nav class="navbar p-3 fixed-top shadow navbar-bordered-bottom " >
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center">
+                <img src="NEW.jpg" alt="Logo" width="40" height="40" class="d-inline-block align-text-top rounded-circle me-2">
+                <span class="text-gradient">ChatAI</span>
+            </a>
+        </div>
+    </nav>
+
+ 
+    <div class="container-fluid d-flex justify-content-center align-items-center vh-100" style="padding-top: 80px;">
+        <div id="chat-container" class="card w-100" style="max-width: 1000px;">
+            <div id="chat-box" class="card-body" style="max-height: 70vh;">
+                <div id="messages"></div>
+            </div>
+            <form id="message-form" class="d-flex p-3" style="background: rgba(0, 0, 0, 0.7); border-radius: 0 0 20px 20px;">
+                <input type="text" id="message-input" class="form-control me-2" placeholder="Type your message..." autocomplete="off" style="border-radius: 30px;">
+                <button type="submit" class="btn btn-primary px-4" style="border-radius: 30px; background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);">Send</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

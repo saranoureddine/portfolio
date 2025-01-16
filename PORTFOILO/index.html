@@ -17,7 +17,11 @@
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/flaticon.css" rel="stylesheet">
     <link rel="icon" href="assets/img/logo.png" type="image/png">
-
+<style>.nav-link.active {
+    color: #ff5722;
+    font-weight: bold;
+}
+</style>
 </head>
 
 <body>
@@ -40,22 +44,22 @@
                             
                             <ul class="header-nav">
                                 <li>
-                                    <a href="#home"><span>Home</span></a>
+                                    <a href="#home"  id="home-link" class="nav-link"><span>Home</span></a>
                                 </li>
                                 <li>
-                                    <a href="#resume"><span>Resume</span></a>
+                                    <a href="#resume "  id="resume-link" class="nav-link"><span>Resume</span></a>
                                 </li>
                                 <li>
-                                    <a href="#services"><span>Services</span></a>
+                                    <a href="#services"  id="services-link" class="nav-link"><span>Services</span></a>
                                 </li>
                                 <li>
-                                    <a href="#skills"><span>Skills</span></a>
+                                    <a href="#skills"  id="skills-link" class="nav-link"><span>Skills</span></a>
                                 </li>
                                 <li>
-                                    <a href="#portfolio"><span>Portfolio</span></a>
+                                    <a href="#portfolio"  id="portfolio-link" class="nav-link"><span>Portfolio</span></a>
                                 </li>
                                 <li>
-                                    <a href="#contact"><span>Contact</span></a>
+                                    <a href="#contact"  id="contact-link" class="nav-link"><span>Contact</span></a>
                                 </li>
                             </ul>
                          
@@ -127,7 +131,7 @@
         <div class="offcanvas-overlay"></div>
 
   
-        <section id="home" class="home section">
+        <section id="home" class="home section" data-section="home>
         <div class="hero-section section-dark-blue-bg">
             <div class="hero-wrapper">
                 <div class="container">
@@ -178,7 +182,7 @@
         </section>
     
   <!-- Resume Section -->
-  <section id="resume" class="resume section">
+  <section id="resume" class="resume section" data-section="resume">
 
 
     <div class="section-content text-center mb-5">
@@ -253,7 +257,7 @@
 <!-- Resume Section -->
 
        <!-- Services Section -->
-       <section id="services" class="services section section-dark-blue-bg mb-4">
+       <section id="services" data-section="services" class="services section section-dark-blue-bg mb-4">
 
         
         <div class="container section-title" data-aos="fade-up">
@@ -346,7 +350,7 @@
       
 
      
-    <section id="skills" class="skills section">
+    <section id="skills" class="skills section" data-section="skills">
 
         <div class="skill-display-section section-gap-tb-165 mt-3 pos-relative">
             <div class="skill-display-section-box">
@@ -506,7 +510,7 @@
         
         
 
-        <section id="portfolio" class="portfolio section">
+        <section id="portfolio" class="portfolio section" data-section="portfolio">
           <div class="section-content text-center mb-5">
               <h2 class="section-title">Portfolio</h2>
               <p>Explore a collection of my recent projects and works.</p>
@@ -580,7 +584,7 @@
               </div>
           </div>
       </section>
-        <footer id="contact" class="footer-section section-bg overflow-hidden pos-relative">
+        <footer id="contact"  data-section="contact" class="footer-section section-bg overflow-hidden pos-relative">
             <div class="section-content text-center mb-0">
                 <h2 class="section-title">Contact</h2>
                 <p>Have a project in mind or need help with web development?</p>
@@ -708,6 +712,34 @@
       });
 
     </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("section[data-section]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const observerOptions = {
+        root: null, // Observe within the viewport
+        rootMargin: "0px",
+        threshold: 0.5, // 50% of the section should be visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const sectionId = entry.target.getAttribute("data-section");
+            const link = document.querySelector(`#${sectionId}-link`);
+            if (entry.isIntersecting) {
+                navLinks.forEach((nav) => nav.classList.remove("active"));
+                link.classList.add("active");
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+        observer.observe(section);
+    });
+});
+</script>
+
 
 </body>
 
